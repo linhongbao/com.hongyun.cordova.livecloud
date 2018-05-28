@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android" id="com.hongyun.cordova.livecloud"
+	version="5.3.0">
+	<name>livecloudPlugin</name>
+	<engines>
+		<engine name="cordova" version=">=3.5.0" />
+	</engines>
+
+	
+	<!--web-quote-->
+	<js-module src="www/livecloud.js" name="livecloud">
+		<clobbers target="navigator.livecloud" />
+	</js-module>
+
+	<!-- android -->
+	<platform name="android">
+
+		<!--Active-->
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/active/BubblingAnimationActivity.java"
+			target-dir="src/com/hongyun/cordova/livecloud/active" />
+
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/active/DataStatistics.java"
+			target-dir="src/com/hongyun/cordova/livecloud/active" />
+
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/active/DemoActivity.java"
+			target-dir="src/com/hongyun/cordova/livecloud/active" />
+
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/active/LiveCameraActivity.java"
+			target-dir="src/com/hongyun/cordova/livecloud/active" />
+
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/active/LivePlayerActivity.java"
+			target-dir="src/com/hongyun/cordova/livecloud/active" />
+
+		<!--adapter-->
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/adapter/LiveCommentAdapter.java"
+			target-dir="src/com/hongyun/cordova/livecloud/adapter" />
+
+		<!--app-->
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/app/App.java"
+			target-dir="src/com/hongyun/cordova/livecloud/app" />
+
+		<!--utils-->
+		<source-file
+			src="src/android/java/com/hongyun/cordova/livecloud/utils/ToastUtils.java"
+			target-dir="src/com/hongyun/cordova/livecloud/utils" />
+
+
+
+
+		<!--jar-->
+		<source-file src="src/android/libs/alivc-live-record-v1.2.0.jar"  target-dir="libs" />
+
+	
+		<!---so-->
+
+		<!--layout-->
+
+		<source-file
+			src="src/android/res/layout/activity_like_animation.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/activity_live_camera.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/activity_quliveplayer.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/demo_activity.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/list_item_comment.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/performance_log.xml"
+			target-dir="src/res/layout" />
+		<source-file
+			src="src/android/res/layout/qupai_common_toast_default_layout.xml"
+			target-dir="src/res/layout" />
+
+
+		<source-file
+			src="src/android/res/values/colors.xml"
+			target-dir="src/res/values" />
+
+		<source-file
+			src="src/android/res/values/strings.xml"
+			target-dir="src/res/strings" />
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="livecloud">
+				<param name="android-package" value="com.hongyun.cordova.livecloud" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+
+
+
+		<!---Active声明 -->
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		
+
+			<activity
+				android:name=".active.DemoActivity"
+				android:screenOrientation="portrait">
+			</activity>
+
+			<activity
+				android:name=".active.LiveCameraActivity"
+				android:configChanges="orientation|keyboardHidden|screenSize"
+				android:launchMode="singleTop"
+				android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+			<activity android:name=".active.LivePlayerActivity"
+					  android:configChanges="orientation|keyboardHidden|screenSize"
+					  android:launchMode="singleTop"
+					  android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+			</activity>
+
+
+			<activity
+				android:name=".active.BubblingAnimationActivity"
+				android:configChanges="orientation|keyboardHidden|screenSize"
+				android:launchMode="singleTop"
+				android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+			</activity>
+
+
+		</config-file>
+
+
+		<config-file target="AndroidManifest.xml" parent="/*">
+			<uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.CAMERA"/>
+			<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+			<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+			<uses-permission android:name="android.permission.READ_SETTINGS"/>
+			<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+			<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+			<uses-permission android:name="android.permission.GET_TASKS"/>
+	     </config-file>
+
+	</platform>
+
+
+
+</plugin>
